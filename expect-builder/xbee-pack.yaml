@@ -1,0 +1,32 @@
+schema-version: 1.0
+
+type: builder
+
+
+const:
+  srcDir: /usr/src
+  exportDir: /opt/expect
+
+
+var:
+  version: 5.45.4
+
+dependency: https://github.com/xbee-linux/tcl.git
+
+provision:
+
+  - shell: "{{ .templates }}/download.sh"
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix={% exportDir %} --with-tcl=/usr/lib --enable-shared --mandir={% exportDir %}/share/man --with-tclinclude=/usr/include
+        - make
+#        - make test
+        - make install
+        - mkdir -p {% exportDir %}/lib/x86_64-linux-gnu
+        - cp expect {% exportDir %}/bin
+        - cp libexpect{% version %}.so {% exportDir %}/lib/x86_64-linux-gnu
+      directory: "{% srcDir %}/expect{% version %}"
+  - export: "{% exportDir %}"
+

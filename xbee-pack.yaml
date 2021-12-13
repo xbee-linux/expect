@@ -1,0 +1,22 @@
+schema-version: 1.0
+
+description: |
+  The Expect package contains tools for automating, via scripted dialogues, interactive applications such as telnet, ftp, passwd, fsck, rlogin, and tip. 
+  Expect is also useful for testing these same applications as well as easing all sorts of tasks that are prohibitively difficult with anything else. The DejaGnu framework is written in Expect.
+
+
+builder:
+  origin: ./expect-builder
+  var:
+    version: "{% version %}"
+
+dependency: ../tcl
+
+var:
+  version: 5.45.4
+
+
+provision:
+  - copy:
+      builder: expect
+      todir: /usr
