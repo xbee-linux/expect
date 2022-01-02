@@ -5,12 +5,9 @@ description: |
   Expect is also useful for testing these same applications as well as easing all sorts of tasks that are prohibitively difficult with anything else. The DejaGnu framework is written in Expect.
 
 
-builder:
-  origin: ./expect-builder
-  var:
-    version: "{% version %}"
+builder: ./expect-builder
 
-dependency: ../tcl
+dependency: tcl
 
 var:
   version: 5.45.4
@@ -19,4 +16,4 @@ var:
 provision:
   - copy:
       builder: expect
-      todir: /usr
+      todir: /
