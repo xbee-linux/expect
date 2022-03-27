@@ -12,9 +12,6 @@ description: |
     expect: Communicates with other interactive programs according to a script
     libexpect-5.45.so: Contains functions that allow Expect to be used as a Tcl extension or to be used directly from C or C++ (without Tcl)
 
-
-builder: ./expect-builder
-
 dependency: tcl
 
 in:
@@ -37,4 +34,4 @@ build:
         - cp expect {% xbeeOut %}/usr/bin
         - cp libexpect{% version %}.so {% xbeeOut %}/usr/lib/x86_64-linux-gnu
       directory: "{% xbeeSrc %}/expect{% version %}"
-  - export: "{% xbeeOut %}"
+
