@@ -14,5 +14,5 @@ dependencies:
   - ./builder
   - tcl
 
-in:
+var:
   version: 5.45.4

@@ -4,23 +4,23 @@ type: builder
 
 dependency: tcl
 
-in:
+var:
   version:
     
 provision:
   - url:
-      from: https://prdownloads.sourceforge.net/expect/expect{% version %}.tar.gz
-      todir: "{% xbeeSrc %}"
+      from: https://prdownloads.sourceforge.net/expect/expect{{ .version }}.tar.gz
+      todir: "{{ .xbee.src }}"
       wget: true
-  - folder: "{% xbeeOut %}/usr/lib/x86_64-linux-gnu"
+  - folder: "{{ .xbee.out }}/usr/lib/x86_64-linux-gnu"
 
 build:
   - shell:
       cmds:
         - ./configure --prefix=/usr --with-tcl=/usr/lib --enable-shared --mandir=/usr/share/man --with-tclinclude=/usr/include
         - make
-        - make install DESTDIR={% xbeeOut %}
-        - cp expect {% xbeeOut %}/usr/bin
-        - cp libexpect{% version %}.so {% xbeeOut %}/usr/lib/x86_64-linux-gnu
-      directory: "{% xbeeSrc %}/expect{% version %}"
+        - make install DESTDIR={{ .xbee.out }}
+        - cp expect {{ .xbee.out }}/usr/bin
+        - cp libexpect{{ .version }}.so {{ .xbee.out }}/usr/lib/x86_64-linux-gnu
+      directory: "{{ .xbee.src }}/expect{{ .version }}"
 
