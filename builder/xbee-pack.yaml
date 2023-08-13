@@ -2,7 +2,7 @@ schema-version: 1.0
 
 type: builder
 
-dependency: tcl
+builder: tcl
 
 var:
   version:
