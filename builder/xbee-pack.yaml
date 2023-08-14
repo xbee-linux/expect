@@ -10,7 +10,6 @@ var:
 provision:
   - url:
       from: https://prdownloads.sourceforge.net/expect/expect{{ .version }}.tar.gz
-      todir: "{{ .xbee.src }}"
       wget: true
   - folder: "{{ .xbee.out }}/usr/lib/x86_64-linux-gnu"
 
